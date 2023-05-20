@@ -1,0 +1,10 @@
+version: "3.9"
+name: dynu
+services:
+  dynu:
+    container_name: dynu
+    image: iamryusei/dynu-on-docker:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: dynu.conf
