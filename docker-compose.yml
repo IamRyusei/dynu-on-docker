@@ -1,10 +1,14 @@
 version: "3.9"
-name: dynu
+name: dynu-on-docker
 services:
   dynu:
     container_name: dynu
-    image: iamryusei/dynu-on-docker:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file: dynu.conf
+    image: ghcr.io/iamryusei/dynu-on-docker:latest
+    restart: unless-stopped
+    environment:
+      - CROND_SCHEDULE: "* * * * *"
+      - DYNUDDNS_HOSTNAME: ""
+      - DYNUDDNS_ALIAS: ""
+      - DYNUDDNS_LOCATION: ""
+      - DYNUDDNS_USERNAME: ""
+      - DYNUDDNS_PASSWORD_SHA256: ""

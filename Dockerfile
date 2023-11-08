@@ -7,7 +7,7 @@ ENV DYNUDDNS_LOCATION ''
 ENV DYNUDDNS_USERNAME ''
 ENV DYNUDDNS_PASSWORD_SHA256 ''
 
-RUN echo -en "#!/bin/sh\nwget -qO- \"http://api.dynu.com/nic/update?hostname=\$DYNUDDNS_HOSTNAME&alias=\$DYNUDDNS_ALIAS&username=\$DYNUDDNS_USERNAME&password=\$DYNUDDNS_PASSWORD_SHA256\"" > /opt/dynu.sh \
+RUN echo -en "#!/bin/sh\nwget -q -O - \"http://api.dynu.com/nic/update?hostname=\$DYNUDDNS_HOSTNAME&alias=\$DYNUDDNS_ALIAS&username=\$DYNUDDNS_USERNAME&password=\$DYNUDDNS_PASSWORD_SHA256\"" > /opt/dynu.sh \
     && chmod +x /opt/dynu.sh \
     && echo "\$CROND_SCHEDULE /opt/dynu.sh" > /etc/crontabs/root
 
